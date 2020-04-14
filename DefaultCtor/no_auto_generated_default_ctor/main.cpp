@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdio.h>
 
 class Foo {
     public:
@@ -10,10 +10,8 @@ int main() {
 
     Foo bar;
     if (bar.mVal || bar.mNext) {
-        std::cout << "bar.mVal:" << bar.mVal
-            << ", bar.mNext:" << bar.mNext
-            << std::endl;
     }
+//    printf("addr of mVal:%p, addr of mNext:%p, sizeof(int*):%d\n", &Foo::mVal, &Foo::mNext, sizeof(int*));
 
     return 0;
 }
