@@ -1,67 +1,40 @@
 #include <iostream>
 
 
-class Point {
+class Data{
   public:
-    Point (float x = 0.0)
-        : mX(x) {
-    }
-
-    float getX () {
-        return mX;
-    }
-
-    void setX (float x) {
-        mX = x;
-    }
-
-  protected:
-    float mX;
+    int a;
+    static int b;
+    int c;
+    static int d;
+    int e;
+    float x, y, z;
+    virtual void foo() {}
 };
 
-class Point2d : public Point {
-  public:
-    Point2d (float x = 0.0, float y = 0.0)
-        : Point(x), mY(y) {
-    }
-
-    float getY () {
-        return mY;
-    }
-
-    void setY (float y) {
-        mY = y;
-    }
-
-  protected:
-    float mY;
-};
-
-class Point3d : public Point2d {
-  public:
-    Point3d (float x = 0.0, float y = 0.0, float z = 0.0)
-      : Point2d(x, y), mZ(z) {
-    }
-
-    float getZ () {
-        return mZ;
-    }
-
-    void setZ (float z) {
-        mZ = z;
-    }
-
-  protected:
-    float mZ;
-};
-
-
+int Data::b;
+int Data::d;
 
 int main() {
 
-    std::cout << "sizeof(Point):" << sizeof(Point)
-            << ", sizeof(Point2d):" << sizeof(Point2d)
-            << ", sizeof(Point3d):" << sizeof(Point3d) << std::endl;
+    printf("sizeof(int):%d, sizeof(float):%d\n", sizeof(int), sizeof(float));
+    printf("addr of a:%p\n", &Data::a);
+    printf("addr of b:%p\n", &Data::b);
+    printf("addr of c:%p\n", &Data::c);
+    printf("addr of d:%p\n", &Data::d);
+    printf("addr of e:%p\n", &Data::e);
+    printf("addr of x:%p\n", &Data::x);
+    printf("addr of y:%p\n", &Data::y);
+    printf("addr of z:%p\n", &Data::z);
+
+    Data d;
+
+    Data::b;
+
+    d.b;
+
+    int Data::*c = &Data::c;
+    printf("addr of Data::*c:0x%x\n", c);
 
     return 0;
 }
